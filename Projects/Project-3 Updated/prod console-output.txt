@@ -1,0 +1,206 @@
+Started by GitHub push by vigneshmarimuthu
+Checking out git https://github.com/vigneshmarimuthu/React-App-CI-CD into /var/lib/jenkins/workspace/React-pipeline@script/27b1c8f02105ee5cd58c9bf782d4cd3b5bad0a80c9450ca3bd03d87b59847939 to read Jenkinsfile
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential dockerhub
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/React-pipeline@script/27b1c8f02105ee5cd58c9bf782d4cd3b5bad0a80c9450ca3bd03d87b59847939/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/vigneshmarimuthu/React-App-CI-CD # timeout=10
+Fetching upstream changes from https://github.com/vigneshmarimuthu/React-App-CI-CD
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/vigneshmarimuthu/React-App-CI-CD +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/dev
+Seen branch in repository origin/main
+Seen 2 remote branches
+ > git show-ref --tags -d # timeout=10
+Checking out Revision cea3d0999bcbebf70dd14c547d25675f79558ea8 (origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f cea3d0999bcbebf70dd14c547d25675f79558ea8 # timeout=10
+Commit message: "Fix: Dockerfile to copy only build/ folder and fix 403 Nginx"
+ > git rev-list --no-walk b1cfa3bddb86a78e1e3ad92755b084379a4be27e # timeout=10
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/React-pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential dockerhub
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/React-pipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/vigneshmarimuthu/React-App-CI-CD # timeout=10
+Fetching upstream changes from https://github.com/vigneshmarimuthu/React-App-CI-CD
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/vigneshmarimuthu/React-App-CI-CD +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/dev
+Seen branch in repository origin/main
+Seen 2 remote branches
+ > git show-ref --tags -d # timeout=10
+Checking out Revision cea3d0999bcbebf70dd14c547d25675f79558ea8 (origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f cea3d0999bcbebf70dd14c547d25675f79558ea8 # timeout=10
+Commit message: "Fix: Dockerfile to copy only build/ folder and fix 403 Nginx"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential dockerhub
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/React-pipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/vigneshmarimuthu/React-App-CI-CD # timeout=10
+Fetching upstream changes from https://github.com/vigneshmarimuthu/React-App-CI-CD
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/vigneshmarimuthu/React-App-CI-CD +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/dev
+Seen branch in repository origin/main
+Seen 2 remote branches
+ > git show-ref --tags -d # timeout=10
+Checking out Revision cea3d0999bcbebf70dd14c547d25675f79558ea8 (origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f cea3d0999bcbebf70dd14c547d25675f79558ea8 # timeout=10
+Commit message: "Fix: Dockerfile to copy only build/ folder and fix 403 Nginx"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build, Push, and Deploy to Dev)
+[Pipeline] echo
+Checking branch for Dev: main
+Stage "Build, Push, and Deploy to Dev" skipped due to when conditional
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build, Push, and Deploy to Prod)
+[Pipeline] echo
+Checking branch for Prod: main
+[Pipeline] script
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $DOCKER_PASS
+[Pipeline] {
+[Pipeline] echo
+✅ Building, pushing, and deploying Prod image...
+[Pipeline] sh
++ echo ****
++ docker login -u vigneshmarimuthu06 --password-stdin
+
+WARNING! Your credentials are stored unencrypted in '/var/lib/jenkins/.docker/config.json'.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/go/credential-store/
+
+Login Succeeded
++ docker build -t vigneshmarimuthu06/prod:latest .
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 426B 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/nginx:stable-alpine
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 84B done
+#3 DONE 0.0s
+
+#4 [1/4] FROM docker.io/library/nginx:stable-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+#4 CACHED
+
+#5 [internal] load build context
+#5 transferring context: 837B 0.0s done
+#5 DONE 0.1s
+
+#6 [2/4] RUN rm -rf /usr/share/nginx/html/*
+#6 DONE 1.0s
+
+#7 [3/4] COPY build/ /usr/share/nginx/html
+#7 DONE 0.2s
+
+#8 [4/4] RUN chmod -R 755 /usr/share/nginx/html
+#8 DONE 1.0s
+
+#9 exporting to image
+#9 exporting layers
+#9 exporting layers 0.3s done
+#9 writing image sha256:37755d292f1ceb62f92e57006f0064959803c63ec8cc293112bd8ec46dd125bb
+#9 writing image sha256:37755d292f1ceb62f92e57006f0064959803c63ec8cc293112bd8ec46dd125bb done
+#9 naming to docker.io/vigneshmarimuthu06/prod:latest 0.0s done
+#9 DONE 0.3s
++ docker push vigneshmarimuthu06/prod:latest
+The push refers to repository [docker.io/vigneshmarimuthu06/prod]
+4c1240a2a43d: Preparing
+2b33c61ac47b: Preparing
+7355781e2911: Preparing
+90ec27130398: Preparing
+a231a657395e: Preparing
+5f23a9cf34f1: Preparing
+7d9abb9ab3b7: Preparing
+34034c523565: Preparing
+570a1c87f279: Preparing
+412e147b334c: Preparing
+922ec217407c: Preparing
+5f23a9cf34f1: Waiting
+7d9abb9ab3b7: Waiting
+34034c523565: Waiting
+570a1c87f279: Waiting
+412e147b334c: Waiting
+922ec217407c: Waiting
+90ec27130398: Layer already exists
+a231a657395e: Layer already exists
+5f23a9cf34f1: Layer already exists
+7d9abb9ab3b7: Layer already exists
+34034c523565: Layer already exists
+570a1c87f279: Layer already exists
+412e147b334c: Layer already exists
+922ec217407c: Layer already exists
+4c1240a2a43d: Pushed
+2b33c61ac47b: Pushed
+7355781e2911: Pushed
+latest: digest: sha256:3b2f1d323c0a6f22706f45565fd322925a543fe9f0ea1650d1abe8f61d9b03b1 size: 2616
++ docker logout
+Removing login credentials for https://index.docker.io/v1/
++ docker stop prod
+prod
++ docker rm prod
+prod
++ docker run -d --name prod -p 80:80 vigneshmarimuthu06/prod:latest
+cafd1e2186646a2db7ceca1abc2956dbf11279ec23963f26193d2d80b54155ea
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+Pipeline finished for branch: main
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

@@ -1,0 +1,189 @@
+Started by GitHub push by vigneshmarimuthu
+Checking out git https://github.com/vigneshmarimuthu/React-App-CI-CD into /var/lib/jenkins/workspace/React-pipeline@script/27b1c8f02105ee5cd58c9bf782d4cd3b5bad0a80c9450ca3bd03d87b59847939 to read Jenkinsfile
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential dockerhub
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/React-pipeline@script/27b1c8f02105ee5cd58c9bf782d4cd3b5bad0a80c9450ca3bd03d87b59847939/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/vigneshmarimuthu/React-App-CI-CD # timeout=10
+Fetching upstream changes from https://github.com/vigneshmarimuthu/React-App-CI-CD
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/vigneshmarimuthu/React-App-CI-CD +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/dev^{commit} # timeout=10
+Checking out Revision eaa120cfe7720e746304c665162f59ea2ad7dce6 (refs/remotes/origin/dev)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f eaa120cfe7720e746304c665162f59ea2ad7dce6 # timeout=10
+Commit message: "Final Fix: Utilizing env.GIT_BRANCH for reliable conditional stage execution"
+ > git rev-list --no-walk bd54c83ce9c120afc8325feca2aaa72c8d64df88 # timeout=10
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/React-pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential dockerhub
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/React-pipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/vigneshmarimuthu/React-App-CI-CD # timeout=10
+Fetching upstream changes from https://github.com/vigneshmarimuthu/React-App-CI-CD
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/vigneshmarimuthu/React-App-CI-CD +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/dev^{commit} # timeout=10
+Checking out Revision eaa120cfe7720e746304c665162f59ea2ad7dce6 (refs/remotes/origin/dev)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f eaa120cfe7720e746304c665162f59ea2ad7dce6 # timeout=10
+Commit message: "Final Fix: Utilizing env.GIT_BRANCH for reliable conditional stage execution"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential dockerhub
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/React-pipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/vigneshmarimuthu/React-App-CI-CD # timeout=10
+Fetching upstream changes from https://github.com/vigneshmarimuthu/React-App-CI-CD
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/vigneshmarimuthu/React-App-CI-CD +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/dev^{commit} # timeout=10
+Checking out Revision eaa120cfe7720e746304c665162f59ea2ad7dce6 (refs/remotes/origin/dev)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f eaa120cfe7720e746304c665162f59ea2ad7dce6 # timeout=10
+Commit message: "Final Fix: Utilizing env.GIT_BRANCH for reliable conditional stage execution"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build, Push, and Deploy to Dev)
+[Pipeline] echo
+Checking branch for Dev deployment: dev
+[Pipeline] script
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $DOCKER_PASS
+[Pipeline] {
+[Pipeline] echo
+🔧 Building, pushing, and deploying Dev image...
+[Pipeline] sh
++ echo ****
++ docker login -u vigneshmarimuthu06 --password-stdin
+
+WARNING! Your credentials are stored unencrypted in '/var/lib/jenkins/.docker/config.json'.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/go/credential-store/
+
+Login Succeeded
++ docker build -t vigneshmarimuthu06/dev:latest .
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 291B 0.0s done
+#1 DONE 0.0s
+
+#2 [auth] library/nginx:pull token for registry-1.docker.io
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/nginx:alpine
+#3 DONE 0.2s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 84B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 5.52kB done
+#5 DONE 0.0s
+
+#6 [1/2] FROM docker.io/library/nginx:alpine@sha256:b3c656d55d7ad751196f21b7fd2e8d4da9cb430e32f646adcf92441b72f82b14
+#6 CACHED
+
+#7 [2/2] COPY . /usr/share/nginx/html
+#7 DONE 0.1s
+
+#8 exporting to image
+#8 exporting layers 0.1s done
+#8 writing image sha256:8a264957ef37606bc52f836b1f4e3070430ac6d00e85b23d6ff5cc33188c1127
+#8 writing image sha256:8a264957ef37606bc52f836b1f4e3070430ac6d00e85b23d6ff5cc33188c1127 done
+#8 naming to docker.io/vigneshmarimuthu06/dev:latest 0.0s done
+#8 DONE 0.1s
++ docker push vigneshmarimuthu06/dev:latest
+The push refers to repository [docker.io/vigneshmarimuthu06/dev]
+d52aca353369: Preparing
+25906c27b84d: Preparing
+99ea4bde418d: Preparing
+3297b9628ff3: Preparing
+b74d92be8225: Preparing
+2c79d5d895bb: Preparing
+2660a7d4b906: Preparing
+50b58ca2a3f5: Preparing
+256f393e029f: Preparing
+2c79d5d895bb: Waiting
+2660a7d4b906: Waiting
+50b58ca2a3f5: Waiting
+256f393e029f: Waiting
+b74d92be8225: Layer already exists
+99ea4bde418d: Layer already exists
+3297b9628ff3: Layer already exists
+25906c27b84d: Layer already exists
+50b58ca2a3f5: Layer already exists
+2c79d5d895bb: Layer already exists
+256f393e029f: Layer already exists
+2660a7d4b906: Layer already exists
+d52aca353369: Pushed
+latest: digest: sha256:c663da246f5abc29a9105b4e79d4ad0118e2ce0948c4b202ce07a0026b2e9afa size: 2199
++ docker logout
+Removing login credentials for https://index.docker.io/v1/
++ docker stop dev
+Error response from daemon: No such container: dev
++ true
++ docker rm dev
+Error response from daemon: No such container: dev
++ true
++ docker run -d --name dev -p 80:80 vigneshmarimuthu06/dev:latest
+d9b1d3100ff4b9abb84e9b16fb043cd34b0ad5e5db2f76d4214cbd35b518b032
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build, Push, and Deploy to Prod)
+[Pipeline] echo
+Checking branch for Prod deployment: dev
+Stage "Build, Push, and Deploy to Prod" skipped due to when conditional
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+Pipeline finished for branch: dev
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
